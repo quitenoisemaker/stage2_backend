@@ -9,15 +9,16 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
     <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Resume</title>
     <style>
         body {
         display: none;
       }
 
     </style>
-    <!-- Title -->
-    <title>Resume</title>
 </head>
+
 
 <body>
     <!-- MAIN CONTENT
@@ -44,22 +45,26 @@ session_start();
                             <div class="form-group">
                                 <!-- Label -->
                                 <label>
-                                    Name
+                                    Name<small class="text-danger">
+                                    *
+                                </small>
                                 </label>
                                 <!-- Text -->
                                 <small class="form-text text-danger">
                                     Enter your full name. Surname first
                                 </small>
                                 <!-- Input -->
-                                <input type="text" name="fname" class="form-control">
+                                <input type="text" name="fname" required="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <!-- Label -->
                                 <label>
-                                    Address
+                                    Address<small class="text-danger">
+                                    *
+                                </small>
                                 </label>
                                 <!-- Input -->
-                                <input type="text" name="address" class="form-control">
+                                <input type="text" name="address" required="" class="form-control">
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-6">
@@ -67,14 +72,16 @@ session_start();
                                     <div class="form-group">
                                         <!-- Label -->
                                         <label>
-                                            Phone number
+                                            Phone number<small class="text-danger">
+                                    *
+                                </small>
                                         </label>
                                         <!-- Text -->
                                         <small class="form-text text-danger">
                                             for more than one number please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="text" name="phone" required="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -82,14 +89,16 @@ session_start();
                                     <div class="form-group">
                                         <!-- Label -->
                                         <label>
-                                            Email
+                                            Email<small class="text-danger">
+                                    *
+                                </small>
                                         </label>
                                         <!-- Text -->
                                         <small class="form-text text-danger">
                                             for more than one email please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="email" name="email" class="form-control" >
+                                        <input type="email" required="" name="email" class="form-control" >
                                     </div>
                                 </div>
                             </div> <!-- / .row -->
@@ -159,10 +168,12 @@ session_start();
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Company name
+                                        Company name<small class="text-danger">
+                                    *
+                                </small>
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" name="cname" class="form-control">
+                                    <input type="text" name="cname" required="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -170,10 +181,12 @@ session_start();
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Job title
+                                        Job title<small class="text-danger">
+                                    *
+                                </small>
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" required="" class="form-control">
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -232,10 +245,12 @@ session_start();
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Institution name
+                                        Institution name<small class="text-danger">
+                                    *
+                                </small>
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" name="name_e" class="form-control">
+                                    <input type="text" name="name_e" required="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -243,10 +258,12 @@ session_start();
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Degree
+                                        Degree<small class="text-danger">
+                                    *
+                                </small>
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" name="degree" class="form-control" >
+                                    <input type="text" name="degree" required="" class="form-control" >
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -323,7 +340,26 @@ session_start();
       $_SESSION['archive']=$_POST['archive'];
 
 
-echo "<script>alert('success')</script>";
+// echo "<script>alert('success')</script>";
+
+echo "<script>swal({
+          title: 'Thanks for filling form',
+          icon: 'success',
+          button: 'Ok!',
+        })
+        .then(function() {
+                swal({
+                            title: 'Please Wait!',
+                            text: 'Processing Resume ...',
+                            timer: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                    window.location = 'cv';
+                });</script>";
 
      
     //   $insert_p=mysqli_query($conn,"INSERT INTO `users`(`id`, `name`, `address`, `email`, `phone`, `obj`, `skills`, `team_work`, `cert`, `interest`) VALUES (NULL,'$_POST[fname]','$_POST[address]','$_POST[email]','$_POST[phone]','$_POST[obj]','$_POST[skills]','','','$_POST[interest]')");
