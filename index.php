@@ -1,6 +1,8 @@
-<!doctype html>
+<?php
+include ('include/db.php');
+// print_r($conn) ;
+?>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,7 +58,7 @@
                                     Enter your full name. Surname first
                                 </small>
                                 <!-- Input -->
-                                <input type="text" class="form-control">
+                                <input type="text" name="fname" class="form-control">
                             </div>
                             <div class="form-group">
                                 <!-- Label -->
@@ -64,7 +66,7 @@
                                     Address
                                 </label>
                                 <!-- Input -->
-                                <input type="text" class="form-control">
+                                <input type="text" name="address" class="form-control">
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-6">
@@ -79,7 +81,7 @@
                                             for more than one number please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="phone" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -94,7 +96,7 @@
                                             for more than one email please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="email" class="form-control" required="">
+                                        <input type="email" name="email" class="form-control" >
                                     </div>
                                 </div>
                             </div> <!-- / .row -->
@@ -111,7 +113,7 @@
                                             for more than one number please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="skills" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -126,7 +128,7 @@
                                             for more than one email please separate with a comma
                                         </small>
                                         <!-- Input -->
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="interest" class="form-control">
                                     </div>
                                 </div>
                             </div> <!-- / .row -->
@@ -141,7 +143,7 @@
                                     This is how others will learn about the project, so make it good!
                                 </small>
                                 <!-- Quill -->
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="obj" rows="3"></textarea>
                             </div>
                         </div>
                 </div>
@@ -164,7 +166,7 @@
                                         Company name
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="cname" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -175,7 +177,7 @@
                                         Job title
                                     </label>
                                     <!-- Input -->
-                                    <input type="email" class="form-control" required="">
+                                    <input type="text" name="title" class="form-control">
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -188,7 +190,7 @@
                                         From
                                     </label>
                                     <!-- Input -->
-                                    <input type="date" class="form-control">
+                                    <input type="date" name="date_start_c" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -199,7 +201,7 @@
                                         To
                                     </label>
                                     <!-- Input -->
-                                    <input type="date" class="form-control" required="">
+                                    <input type="date" name="date_end_c" class="form-control" >
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -209,7 +211,7 @@
                             <label class="mb-1">
                                 Job description
                             </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" name="desc_c" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         
                     </div>
@@ -231,10 +233,10 @@
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Company name
+                                        Institution name
                                     </label>
                                     <!-- Input -->
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="name_e" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -242,10 +244,10 @@
                                 <div class="form-group">
                                     <!-- Label -->
                                     <label>
-                                        Job title
+                                        Degree
                                     </label>
                                     <!-- Input -->
-                                    <input type="email" class="form-control" required="">
+                                    <input type="text" name="degree" class="form-control" >
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -258,7 +260,7 @@
                                         From
                                     </label>
                                     <!-- Input -->
-                                    <input type="date" class="form-control">
+                                    <input type="date" name="date_start_e" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -269,7 +271,7 @@
                                         To
                                     </label>
                                     <!-- Input -->
-                                    <input type="date" class="form-control" required="">
+                                    <input type="date" name="date_end_e" class="form-control">
                                 </div>
                             </div>
                         </div> <!-- / .row -->
@@ -277,9 +279,9 @@
                         <div class="form-group">
                             <!-- Label -->
                             <label class="mb-1">
-                                Job description
+                                Archievement
                             </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" name="archive" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <!-- Divider -->
                         <hr class="my-5">
@@ -287,7 +289,7 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <!-- Button -->
-                                <button class="btn btn-lg btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-lg btn-primary" name="submit">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -295,9 +297,29 @@
                 </div>
             </div>
         </div>
-    </div> <!-- / .main-content -->
-
+    </div> 
     </form>
+
+    <?php
+
+    if (isset($_POST['submit'])) {
+      # code...
+     
+      $insert_p=mysqli_query($conn,"INSERT INTO `users`(`id`, `name`, `address`, `email`, `phone`, `obj`, `skills`, `team_work`, `cert`, `interest`) VALUES (NULL,'$_POST[fname]','$_POST[address]','$_POST[email]','$_POST[phone]','$_POST[obj]','$_POST[skills]','','','$_POST[interest]')");
+
+      $insert_c=mysqli_query($conn,"INSERT INTO `experience`(`id`, `title`, `name`, `date_started`, `date_end`, `descrip`) VALUES (NULL,'$_POST[title]','$_POST[cname]','$_POST[date_start_c]','$_POST[date_end_c]','$_POST[desc_c]')");
+
+      $insert_e=mysqli_query($conn,"INSERT INTO `education`(`id`, `name`, `degree`, `date_start`, `date_end`, `arch`) VALUES (NULL,'name_e','$_POST[degree]','$_POST[date_start_e]','$_POST[date_end_e]','$_POST[archive]')");
+
+      if ($insert_p && $insert_e && $insert_c) {
+      echo "<script>alert('success')</script>";
+    }else{
+      echo "<script>alert('Error')</script>";
+    }
+    }
+
+    
+    ?>
     <!-- JAVASCRIPT
     ================================================== -->
     <!-- Libs JS -->

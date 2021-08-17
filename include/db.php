@@ -1,6 +1,12 @@
 <?php
-		$conn =new mysqli('localhost', 'root', '' , 'cv');
-		if ($conn->connect_error) {
-			echo "<b>Error:</b> Connection failed - $conn->connect_error";
-		}
+		
+		$dbhost = 'localhost';
+     $dbuser = 'root';
+     $dbpass = '';
+     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, 'cv');
+
+     if(! $conn ){
+        die('Could not connect: ' . mysqli_error());
+        mysqli_close( $conn);
+     }
 ?>
