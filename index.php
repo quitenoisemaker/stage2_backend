@@ -1,3 +1,37 @@
+<?php
+
+require 'vendor/autoload.php';
+use \Mailjet\Resources;
+    function sendMails2($from_mail, $from_name, $receiver_mail, $txt, $subject){
+  
+  
+  $mj = new \Mailjet\Client('97a2ab273bbdb0f23c15ac1ed39cf5f7','11d45a703c85817a08167a93660e12c4',true,['version' => 'v3.1']);
+  $body = [
+    'Messages' => [
+      [
+        'From' => [
+          'Email' => "$from_mail",
+          'Name' => "$from_name"
+        ],
+        'To' => [
+          [
+            'Email' => "$receiver_mail"
+            
+          ]
+        ],
+        'Subject' => "$subject",
+        // 'TextPart' => "My first Mailjet email",
+        'HTMLPart' => "$txt",
+        'CustomID' => "AppGettingStartedTest"
+      ]
+    ]
+  ];
+  $response = $mj->post(Resources::$Email, ['body' => $body]);
+  $response->success() && var_dump($response->getData());
+
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -170,11 +204,11 @@
                         $to='samsonojugo@gmail.com';
                         $subject = $subject;
                     
-                        $headers[] = 'MIME-Version: 1.0';
-                        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-                        $headers[] = 'From: '.$fname.' <'.$mail.'>' . "\r\n" .
-                        'Reply-To: '.$mail.'' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
+                        // $headers[] = 'MIME-Version: 1.0';
+                        // $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                        // $headers[] = 'From: '.$fname.' <'.$mail.'>' . "\r\n" .
+                        // 'Reply-To: '.$mail.'' . "\r\n" .
+                        // 'X-Mailer: PHP/' . phpversion();
                         
     
                         $body = '<html><body>';
@@ -186,9 +220,11 @@
                         $body .= '<p>Message: <b>'.$message. '</b></p><br><br>';
                         $body .= '</body></html>';
             
-                        $mail=mail($to, $subject, $body, implode("\r\n", $headers));
+                        // $mail=mail($to, $subject, $body, implode("\r\n", $headers));
+
+                        $mail=sendMails2('samsonojugo@gmail.com', 'contactForm', $to, $body, $subject);
                         
-                        if($mail){
+                        if($mail==TRUE){
                             echo "<script>swal({
                     title: 'Message sent',
                     icon: 'success',
