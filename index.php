@@ -1,5 +1,6 @@
 <?php
 include ('include/db.php');
+session_start();
 // print_r($conn) ;
 ?>
 <html lang="en">
@@ -27,7 +28,7 @@ include ('include/db.php');
 <body>
     <!-- MAIN CONTENT
     ================================================== -->
-    <div class="main-content">
+    <div class="main-content pt-4">
         <div class="container-lg">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10 col-xl-8">
@@ -38,9 +39,7 @@ include ('include/db.php');
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
                                     <!-- Pretitle -->
-                                    <h6 class="mb-4 text-uppercase text-dark">
-                                        Step 1 of 3
-                                    </h6>
+                                    <a href="https://training.zuri.team" target="blank"><img src="logo/download.png" class="img-fluid" width="300"></a><br><br><br>
                                     <!-- Title -->
                                     <h1 class="mb-3">
                                         Personal details
@@ -108,10 +107,7 @@ include ('include/db.php');
                                         <label>
                                             Skills
                                         </label>
-                                        <!-- Text -->
-                                        <small class="form-text text-danger">
-                                            for more than one number please separate with a comma
-                                        </small>
+                                        
                                         <!-- Input -->
                                         <input type="text" name="skills" class="form-control">
                                     </div>
@@ -123,10 +119,7 @@ include ('include/db.php');
                                         <label>
                                             Interest
                                         </label>
-                                        <!-- Text -->
-                                        <small class="form-text text-danger">
-                                            for more than one email please separate with a comma
-                                        </small>
+              
                                         <!-- Input -->
                                         <input type="text" name="interest" class="form-control">
                                     </div>
@@ -139,9 +132,9 @@ include ('include/db.php');
                                     Objectives
                                 </label>
                                 <!-- Text -->
-                                <small class="form-text text-danger">
+                                <!-- <small class="form-text text-danger">
                                     This is how others will learn about the project, so make it good!
-                                </small>
+                                </small> -->
                                 <!-- Quill -->
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="obj" rows="3"></textarea>
                             </div>
@@ -156,6 +149,9 @@ include ('include/db.php');
                                     <h1 class="mb-3">
                                         Previous Experience
                                     </h1>
+                                    <small class="form-text text-danger">
+                                    Please enter your recent work experience.
+                                </small>
                     <div class="">
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -226,6 +222,9 @@ include ('include/db.php');
                                     <h1 class="mb-3">
                                         Education
                                     </h1>
+                                    <small class="form-text text-danger">
+                                    Please enter your recent work experience.
+                                </small>
                     <div class="">
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -304,19 +303,41 @@ include ('include/db.php');
 
     if (isset($_POST['submit'])) {
       # code...
+
+      $_SESSION['fname']=$_POST['fname'];
+      $_SESSION['address']=$_POST['address'];
+      $_SESSION['email']=$_POST['email'];
+      $_SESSION['phone']=$_POST['phone'];
+      $_SESSION['obj']=$_POST['obj'];
+      $_SESSION['skills']=$_POST['skills'];
+      $_SESSION['interest']=$_POST['interest'];
+      $_SESSION['title']=$_POST['title'];
+      $_SESSION['cname']=$_POST['cname'];
+      $_SESSION['date_start_c']=$_POST['date_start_c'];
+      $_SESSION['date_end_c']=$_POST['date_end_c'];
+      $_SESSION['desc_c']=$_POST['desc_c'];
+      $_SESSION['degree']=$_POST['degree'];
+      $_SESSION['name_e']=$_POST['name_e'];
+      $_SESSION['date_start_e']=$_POST['date_start_e'];
+      $_SESSION['date_end_e']=$_POST['date_end_e'];
+      $_SESSION['archive']=$_POST['archive'];
+
+
+echo "<script>alert('success')</script>";
+
      
-      $insert_p=mysqli_query($conn,"INSERT INTO `users`(`id`, `name`, `address`, `email`, `phone`, `obj`, `skills`, `team_work`, `cert`, `interest`) VALUES (NULL,'$_POST[fname]','$_POST[address]','$_POST[email]','$_POST[phone]','$_POST[obj]','$_POST[skills]','','','$_POST[interest]')");
+    //   $insert_p=mysqli_query($conn,"INSERT INTO `users`(`id`, `name`, `address`, `email`, `phone`, `obj`, `skills`, `team_work`, `cert`, `interest`) VALUES (NULL,'$_POST[fname]','$_POST[address]','$_POST[email]','$_POST[phone]','$_POST[obj]','$_POST[skills]','','','$_POST[interest]')");
 
-      $insert_c=mysqli_query($conn,"INSERT INTO `experience`(`id`, `title`, `name`, `date_started`, `date_end`, `descrip`) VALUES (NULL,'$_POST[title]','$_POST[cname]','$_POST[date_start_c]','$_POST[date_end_c]','$_POST[desc_c]')");
+    //   $insert_c=mysqli_query($conn,"INSERT INTO `experience`(`id`, `title`, `name`, `date_started`, `date_end`, `descrip`) VALUES (NULL,'$_POST[title]','$_POST[cname]','$_POST[date_start_c]','$_POST[date_end_c]','$_POST[desc_c]')");
 
-      $insert_e=mysqli_query($conn,"INSERT INTO `education`(`id`, `name`, `degree`, `date_start`, `date_end`, `arch`) VALUES (NULL,'name_e','$_POST[degree]','$_POST[date_start_e]','$_POST[date_end_e]','$_POST[archive]')");
+    //   $insert_e=mysqli_query($conn,"INSERT INTO `education`(`id`, `name`, `degree`, `date_start`, `date_end`, `arch`) VALUES (NULL,'$_POST[name_e]','$_POST[degree]','$_POST[date_start_e]','$_POST[date_end_e]','$_POST[archive]')");
 
-      if ($insert_p && $insert_e && $insert_c) {
-      echo "<script>alert('success')</script>";
-    }else{
-      echo "<script>alert('Error')</script>";
-    }
-    }
+    //   if ($insert_p && $insert_e && $insert_c) {
+    //   echo "<script>alert('success')</script>";
+    // }else{
+    //   echo "<script>alert('Error')</script>";
+    // }
+     }
 
     
     ?>
