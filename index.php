@@ -1,391 +1,205 @@
-<?php
-include ('include/db.php');
-session_start();
-// print_r($conn) ;
-?>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
+    <html lang="eng">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
-    <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Resume</title>
-    <style>
-        body {
-        display: none;
-      }
-
-    </style>
+    <title>Curriculum Vitae</title>
 </head>
+<style>
+.content {
+    max-width: 960px;
+    margin: 0 auto;
+}
 
+.content div p {
+    margin: 5px;
+    font-size: 18px;
+}
+
+#experience {
+    display: flex;
+    flex-direction: row;
+}
+
+.start {
+    justify-content: flex-start;
+    width: 800px;
+    margin: 10px;
+
+}
+
+.end {
+    justify-content: flex-end;
+    width: 100px;
+    margin: 10px;
+
+}
+
+#personal {
+    text-align: center;
+}
+</style>
 
 <body>
-    <!-- MAIN CONTENT
-    ================================================== -->
-    <div class="main-content pt-4">
-        <div class="container-lg">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-10 col-xl-8">
-                    <!-- Form -->
-                    <form action="" method="POST">
-                        <div class="">
-                            <!-- Header -->
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
-                                    <!-- Pretitle -->
-                                    <a href="https://training.zuri.team" target="blank"><img src="logo/download.png" class="img-fluid" width="300"></a><br><br><br>
-                                    <!-- Title -->
-                                    <h1 class="mb-3">
-                                        Personal details
-                                    </h1>
-                                </div>
-                            </div> <!-- / .row -->
-                            <!-- Team name -->
-                            <div class="form-group">
-                                <!-- Label -->
-                                <label>
-                                    Name<small class="text-danger">
-                                    *
-                                </small>
-                                </label>
-                                <!-- Text -->
-                                <small class="form-text text-danger">
-                                    Enter your full name. Surname first
-                                </small>
-                                <!-- Input -->
-                                <input type="text" name="fname" required="" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <!-- Label -->
-                                <label>
-                                    Address<small class="text-danger">
-                                    *
-                                </small>
-                                </label>
-                                <!-- Input -->
-                                <input type="text" name="address" required="" class="form-control">
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <!-- Start date -->
-                                    <div class="form-group">
-                                        <!-- Label -->
-                                        <label>
-                                            Phone number<small class="text-danger">
-                                    *
-                                </small>
-                                        </label>
-                                        <!-- Text -->
-                                        <small class="form-text text-danger">
-                                            for more than one number please separate with a comma
-                                        </small>
-                                        <!-- Input -->
-                                        <input type="text" name="phone" required="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <!-- Start date -->
-                                    <div class="form-group">
-                                        <!-- Label -->
-                                        <label>
-                                            Email<small class="text-danger">
-                                    *
-                                </small>
-                                        </label>
-                                        <!-- Text -->
-                                        <small class="form-text text-danger">
-                                            for more than one email please separate with a comma
-                                        </small>
-                                        <!-- Input -->
-                                        <input type="email" required="" name="email" class="form-control" >
-                                    </div>
-                                </div>
-                            </div> <!-- / .row -->
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <!-- Start date -->
-                                    <div class="form-group">
-                                        <!-- Label -->
-                                        <label>
-                                            Skills
-                                        </label>
-                                        <small class="form-text text-danger">
-                                            Please separate with a comma
-                                        </small>
-                                        
-                                        <!-- Input -->
-                                        <input type="text" name="skills" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <!-- Start date -->
-                                    <div class="form-group">
-                                        <!-- Label -->
-                                        <label>
-                                            Interest
-                                        </label>
-                                        <small class="form-text text-danger">
-                                            Please separate with a comma
-                                        </small>
-              
-                                        <!-- Input -->
-                                        <input type="text" name="interest" class="form-control">
-                                    </div>
-                                </div>
-                            </div> <!-- / .row -->
-                            <!-- Team description -->
-                            <div class="form-group">
-                                <!-- Label -->
-                                <label class="mb-1">
-                                    Objectives
-                                </label>
-                                <!-- Text -->
-                                <!-- <small class="form-text text-danger">
-                                    This is how others will learn about the project, so make it good!
-                                </small> -->
-                                <!-- Quill -->
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="obj" rows="3"></textarea>
-                            </div>
-                        </div>
-                </div>
-            </div>
+    <div class="content p-2">
+        <div class="text-center pt-4">
+            <a href="https://training.zuri.team" target="blank"><img src="logo/download.png" class="img-fluid" width="300"></a>
+        </div><br><br>
+        <div id="personal">
+            <h2>Hey I'm <span class="text-primary">Ojugo Samson Ehis</span></h2>
         </div>
-        <div class="container-lg">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-10 col-xl-8">
-                  <!-- Title -->
-                                    <h1 class="mb-3">
-                                        Previous Experience
-                                    </h1>
-                                    <small class="form-text text-danger">
-                                    Please enter your recent work experience.
-                                </small>
-                    <div class="">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        Company name<small class="text-danger">
-                                    *
-                                </small>
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="text" name="cname" required="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        Job title<small class="text-danger">
-                                    *
-                                </small>
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="text" name="title" required="" class="form-control">
-                                </div>
-                            </div>
-                        </div> <!-- / .row -->
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        From
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="date" name="date_start_c" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        To
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="date" name="date_end_c" class="form-control" >
-                                </div>
-                            </div>
-                        </div> <!-- / .row -->
-                        <!-- Team description -->
-                        <div class="form-group">
-                            <!-- Label -->
-                            <label class="mb-1">
-                                Job description
-                            </label>
-                            <textarea class="form-control" name="desc_c" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        
+        <div id="skills">
+            <h3>Skills</h3>
+            <p>Good knowledge of HTML, CSS, Bootstrap, JavaScript, WordPress, PHP, UNIT TESTING, GIT, OOP, Laravel and MYSQL.</p>
+        </div>
+        <div id="skills">
+            <h3>Personal Portfolio</h3>
+            <a href="https://samsonojugo.herokuapp.com">https://samsonojugo.herokuapp.com</a>
+        </div>
+        <div>
+            <h3>Experience</h3>
+            <div id="experience">
+                <div class="start" style="margin-top: 0">
+                    <h5>(Software Developer / ATM Support Engineer) - (Universal Horizon Limited)</h5>
+                    <ul>
+                        <li>Incident Management System</li>
+                        <li>Debugging and troubleshooting of web applications</li>
+                        <li>MySQL database Management</li>
+                        <li>Building Scalable new features on existing products</li>
+                    </ul>
+                </div>
+                <!-- <div class="end"><h4>From - To</h4>
+        <p>2020 - Present</p></div>
+      </div>   -->
+            </div>
+            <div id="education">
+                <h3>Education</h3>
+                <div id="experience">
+                    <div class="start" style="margin-top: 0">
+                        <h5>(University of Benin) - (Bsc. Computer Science)</h5>
+                        <li>Resourceful member of the Nigeria Computer Society
+                            NCS student chapter, UNIBEN).</li>
+                        <li>Good team member and leader at various departmental practical groups</li>
+                        </ul>
                     </div>
-                    
+                    <!-- <div class="end"><h4>From - to</h4>
+        <p>2011 - 2015</p></div>
+      </div> -->
+                </div>
+                <div id="interest">
+                    <h3>Interest</h3>
+                    <p>Learning new technology tools, Internet surfing, music and drawing</p>
                 </div>
             </div>
-        </div>
-        <div class="container-lg">
+
+            <section id="contact pt-4">
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-10 col-xl-8">
-                  <!-- Title -->
-                                    <h1 class="mb-3">
-                                        Education
-                                    </h1>
-                                    <small class="form-text text-danger">
-                                    Please enter your recent work experience.
-                                </small>
-                    <div class="">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        Institution name<small class="text-danger">
-                                    *
-                                </small>
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="text" name="name_e" required="" class="form-control">
+                <div class="col-12 col-lg-10 text-center p-1">
+                    <div class="alt-font text-medium text-uppercase margin-5px-bottom sm-margin-three-bottom "><h4 class="text-primary">I'M OPEN FOR CONTRACT</h4></div>
+                    <h5 class="margin-55px-bottom alt-font font-weight-600 text-uppercase md-margin-30px-bottom sm-margin-15px-bottom">GET <span class="text-primary">FREE</span> BUSINESS CONSULTATION AND <span class="text-primary">FREE</span> WHITEBOARD ANIMATION ON A GO</h5>
+                    <div class="contact-us-form rounded p-4" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+                        <form method="POST" id="form" >
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="name" placeholder="Enter name" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter email" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="phone" placeholder="Enter phone number" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea name="comment" id="comment" class="form-control" rows="7" cols="25" placeholder="Your How can we help ( Tell us about your business and goals"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="number" id="budget" class="form-control" name="budget" placeholder="What is the budget for the project *"  required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 mt-3">
+                                    <button type="submit" class="btn btn-dark btn-block" id="btnContactUs" name="submit">
+                                        Send Message
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        Degree<small class="text-danger">
-                                    *
-                                </small>
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="text" name="degree" required="" class="form-control" >
-                                </div>
-                            </div>
-                        </div> <!-- / .row -->
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        From
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="date" name="date_start_e" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Start date -->
-                                <div class="form-group">
-                                    <!-- Label -->
-                                    <label>
-                                        To
-                                    </label>
-                                    <!-- Input -->
-                                    <input type="date" name="date_end_e" class="form-control">
-                                </div>
-                            </div>
-                        </div> <!-- / .row -->
-                        <!-- Team description -->
-                        <div class="form-group">
-                            <!-- Label -->
-                            <label class="mb-1">
-                                Archievement
-                            </label>
-                            <textarea class="form-control" name="archive" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <!-- Divider -->
-                        <hr class="my-5">
-                        <!-- Footer -->
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <!-- Button -->
-                                <button type="submit" class="btn btn-lg btn-primary" name="submit">Submit</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-                    
                 </div>
             </div>
         </div>
-    </div> 
-    </form>
-
-    <?php
-
-    if (isset($_POST['submit'])) {
-      # code...
-
-      $_SESSION['fname']=$_POST['fname'];
-      $_SESSION['address']=$_POST['address'];
-      $_SESSION['email']=$_POST['email'];
-      $_SESSION['phone']=$_POST['phone'];
-      $_SESSION['obj']=$_POST['obj'];
-      $_SESSION['skills']=$_POST['skills'];
-      $_SESSION['interest']=$_POST['interest'];
-      $_SESSION['title']=$_POST['title'];
-      $_SESSION['cname']=$_POST['cname'];
-      $_SESSION['date_start_c']=$_POST['date_start_c'];
-      $_SESSION['date_end_c']=$_POST['date_end_c'];
-      $_SESSION['desc_c']=$_POST['desc_c'];
-      $_SESSION['degree']=$_POST['degree'];
-      $_SESSION['name_e']=$_POST['name_e'];
-      $_SESSION['date_start_e']=$_POST['date_start_e'];
-      $_SESSION['date_end_e']=$_POST['date_end_e'];
-      $_SESSION['archive']=$_POST['archive'];
-
-
-// echo "<script>alert('success')</script>";
-
-echo "<script>swal({
-          title: 'Thanks for filling form',
-          icon: 'success',
-          button: 'Ok!',
-        })
-        .then(function() {
-                swal({
-                            title: 'Please Wait!',
-                            text: 'Processing Resume ...',
-                            timer: false,
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            onOpen: () => {
-                                swal.showLoading()
-                            }
-                        })
-                    window.location = 'cv';
-                });</script>";
-
-     
-    //   $insert_p=mysqli_query($conn,"INSERT INTO `users`(`id`, `name`, `address`, `email`, `phone`, `obj`, `skills`, `team_work`, `cert`, `interest`) VALUES (NULL,'$_POST[fname]','$_POST[address]','$_POST[email]','$_POST[phone]','$_POST[obj]','$_POST[skills]','','','$_POST[interest]')");
-
-    //   $insert_c=mysqli_query($conn,"INSERT INTO `experience`(`id`, `title`, `name`, `date_started`, `date_end`, `descrip`) VALUES (NULL,'$_POST[title]','$_POST[cname]','$_POST[date_start_c]','$_POST[date_end_c]','$_POST[desc_c]')");
-
-    //   $insert_e=mysqli_query($conn,"INSERT INTO `education`(`id`, `name`, `degree`, `date_start`, `date_end`, `arch`) VALUES (NULL,'$_POST[name_e]','$_POST[degree]','$_POST[date_start_e]','$_POST[date_end_e]','$_POST[archive]')");
-
-    //   if ($insert_p && $insert_e && $insert_c) {
-    //   echo "<script>alert('success')</script>";
-    // }else{
-    //   echo "<script>alert('Error')</script>";
-    // }
-     }
-
-    
-    ?>
-    <!-- JAVASCRIPT
-    ================================================== -->
-    <!-- Libs JS -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script src="assets/libs/list.js/dist/list.min.js"></script>
-    <!-- Theme JS -->
-    <script src="assets/js/theme.min.js"></script>
+    </section>
 </body>
 
 </html>
+
+<?php
+    if(isset($_POST['submit'])){
+                
+                $fname= $_POST['name'];
+                $mail=$_POST['email'];
+                $phone=$_POST['phone'];
+                $message=$_POST['comment'];
+                $budget=$_POST['budget'];
+                
+                $subject = 'Contact Form';
+                
+                //Sending email
+                        $to='samsonojugo@gmail.com';
+                        $subject = $subject;
+                    
+                        $headers[] = 'MIME-Version: 1.0';
+                        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                        $headers[] = 'From: '.$fname.' <'.$mail.'>' . "\r\n" .
+                        'Reply-To: '.$mail.'' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                        
+    
+                        $body = '<html><body>';
+                        $body .= '<h2 style="color:black;">Contact Form</h2>';
+                        $body .= '<p>Full name: <b>'.$fname. '</b></p><br><br>';
+                        $body .= '<p>Phone: <b>'.$phone. '</b></p><br><br>';
+                        $body .= '<p>Email: <b>'.$mail. '</b></p><br><br>';
+                        $body .= '<p>Budget: <b>'.$budget. '</b></p><br><br>';
+                        $body .= '<p>Message: <b>'.$message. '</b></p><br><br>';
+                        $body .= '</body></html>';
+            
+                        $mail=mail($to, $subject, $body, implode("\r\n", $headers));
+                        
+                        if($mail){
+                            echo "<script>swal({
+                    title: 'Message sent',
+                    icon: 'success',
+                    button: 'Ok!',
+                  })</script>";
+                        }else{
+                            echo "<script>swal({
+                    title: 'Opps! Error sending message',
+                    icon: 'warning',
+                    button: 'Ok!',
+                  })</script>";
+                        }
+            }
+        ?>
