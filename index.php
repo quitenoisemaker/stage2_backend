@@ -7,12 +7,6 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Libs CSS -->
-    <!-- <link rel="stylesheet" href="assets/fonts/feather/feather.css">
-    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
-    <link rel="stylesheet" href="assets/libs/highlightjs/styles/vs2015.css"> -->
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
     <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
     <style>
@@ -107,6 +101,9 @@ session_start();
                                         <label>
                                             Skills
                                         </label>
+                                        <small class="form-text text-danger">
+                                            Please separate with a comma
+                                        </small>
                                         
                                         <!-- Input -->
                                         <input type="text" name="skills" class="form-control">
@@ -119,6 +116,9 @@ session_start();
                                         <label>
                                             Interest
                                         </label>
+                                        <small class="form-text text-danger">
+                                            Please separate with a comma
+                                        </small>
               
                                         <!-- Input -->
                                         <input type="text" name="interest" class="form-control">
