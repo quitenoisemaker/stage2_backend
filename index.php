@@ -224,7 +224,7 @@ use \Mailjet\Resources;
 
                         $mail=sendMails2('samsonojugo@gmail.com', 'contactForm', $to, $body, $subject);
                         
-                        if($mail==TRUE){
+                        if($mail){
                             echo "<script>swal({
                     title: 'Message sent',
                     icon: 'success',
