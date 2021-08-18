@@ -220,7 +220,9 @@ try {
     $mail->setFrom('samsonojugo@gmail.com', 'Mailer');
     $mail->addAddress('dequietdennis@gmail.com', 'samson');     //Add a recipient
     // $mail->addAddress($mail);               //Name is optional
-    
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
     $mail->CharSet = "UTF-8";
 
     //Attachments
