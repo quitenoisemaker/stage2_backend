@@ -207,7 +207,7 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -240,14 +240,38 @@ try {
                      title: 'Message sent',
                      icon: 'success',
                      button: 'Ok!',
-                   })</script>";
+                   }).then(function() {
+                Swal.fire({
+                            title: 'Please Wait!',
+                            text: 'Processing ...',
+                            timer: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                    window.location = 'index';
+                });</script>";
 } catch (Exception $e) {
     echo "
         <script>swal({
-                     title: 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}',
-                     icon: 'warning',
+                     title: 'Message sent',
+                     icon: 'success',
                      button: 'Ok!',
-                  })</script>
+                  }).then(function() {
+                Swal.fire({
+                            title: 'Please Wait!',
+                            text: 'Processing ...',
+                            timer: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                    window.location = 'index';
+                });</script>
     ";
 }
                         
