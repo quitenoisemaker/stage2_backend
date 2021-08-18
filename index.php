@@ -218,7 +218,7 @@ try {
 
     //Recipients
     $mail->setFrom('samsonojugo@gmail.com', 'Mailer');
-    $mail->addAddress($mail, 'samson');     //Add a recipient
+    $mail->addAddress('dequietdennis@gmail.com', 'samson');     //Add a recipient
     // $mail->addAddress($mail);               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -244,7 +244,7 @@ try {
 } catch (Exception $e) {
     echo "
         <script>swal({
-                     title: 'Message could not be sent. Mailer Error: ".{$mail->ErrorInfo}."',
+                     title: 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}',
                      icon: 'warning',
                      button: 'Ok!',
                   })</script>
