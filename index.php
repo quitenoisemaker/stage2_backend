@@ -1,36 +1,13 @@
 <?php
 
+                        //Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
 require 'vendor/autoload.php';
-use \Mailjet\Resources;
-    function sendMails2($from_mail, $from_name, $receiver_mail, $txt, $subject){
-  
-  
-  $mj = new \Mailjet\Client('97a2ab273bbdb0f23c15ac1ed39cf5f7','11d45a703c85817a08167a93660e12c4',true,['version' => 'v3.1']);
-  $body = [
-    'Messages' => [
-      [
-        'From' => [
-          'Email' => "$from_mail",
-          'Name' => "$from_name"
-        ],
-        'To' => [
-          [
-            'Email' => "$receiver_mail"
-            
-          ]
-        ],
-        'Subject' => "$subject",
-        // 'TextPart' => "My first Mailjet email",
-        'HTMLPart' => "$txt",
-        'CustomID' => "AppGettingStartedTest"
-      ]
-    ]
-  ];
-  $response = $mj->post(Resources::$Email, ['body' => $body]);
-  $response->success() && var_dump($response->getData());
-
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -191,6 +168,8 @@ use \Mailjet\Resources;
 
 <?php
     if(isset($_POST['submit'])){
+
+
                 
                 $fname= $_POST['name'];
                 $mail=$_POST['email'];
@@ -222,20 +201,61 @@ use \Mailjet\Resources;
             
                         // $mail=mail($to, $subject, $body, implode("\r\n", $headers));
 
-                        $mail=sendMails2('samsonojugo@gmail.com', 'contactForm', $to, $body, $subject);
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.googlemail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'samsonojugo@gmail.com';                     //SMTP username
+    $mail->Password   = 'quietnoisemaker';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('samsonojugo@gmail.com', 'Mailer');
+    $mail->addAddress($mail, 'samson');     //Add a recipient
+    // $mail->addAddress($mail);               //Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo "<script>swal({
+                     title: 'Message sent',
+                     icon: 'success',
+                     button: 'Ok!',
+                   })</script>";
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
                         
-                        if($mail){
-                            echo "<script>swal({
-                    title: 'Message sent',
-                    icon: 'success',
-                    button: 'Ok!',
-                  })</script>";
-                        }else{
-                            echo "<script>swal({
-                    title: 'Opps! Error sending message',
-                    icon: 'warning',
-                    button: 'Ok!',
-                  })</script>";
-                        }
+                  //       if($mail){
+                  //           echo "<script>swal({
+                  //   title: 'Message sent',
+                  //   icon: 'success',
+                  //   button: 'Ok!',
+                  // })</script>";
+                  //       }else{
+                  //           echo "<script>swal({
+                  //   title: 'Opps! Error sending message',
+                  //   icon: 'warning',
+                  //   button: 'Ok!',
+                  // })</script>";
+                  //       }
             }
         ?>
