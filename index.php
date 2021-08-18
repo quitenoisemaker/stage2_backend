@@ -242,7 +242,13 @@ try {
                      button: 'Ok!',
                    })</script>";
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "
+        <script>swal({
+                     title: 'Message could not be sent. Mailer Error: ".{$mail->ErrorInfo}."',
+                     icon: 'warning',
+                     button: 'Ok!',
+                  })</script>
+    ";
 }
                         
                   //       if($mail){
