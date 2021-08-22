@@ -19,7 +19,6 @@ require 'vendor/autoload.php';
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,7 +30,14 @@ require 'vendor/autoload.php';
     <title>Curriculum Vitae</title>
 </head>
 <style>
-.content {
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500;600&display=swap');
+body{
+
+  font-family: 'Inconsolata', monospace;
+}
+
+    .content {
     max-width: 960px;
     margin: 0 auto;
 }
@@ -70,29 +76,29 @@ require 'vendor/autoload.php';
         <div class="text-center pt-4">
             <a href="https://training.zuri.team" target="blank"><img src="logo/download.png" class="img-fluid" width="300"></a>
         </div><br>
-        
         <div id="personal">
-            <h2>Hey I'm <span class="text-primary">Ojugo Samson Ehis</span></h2>
+            <h5>Hey, I'm <span class="text-primary">Sammy</span>
+                Computer Science graduate and a Tech savvy. My goal is to bridge the gap between business and technology in Africa. I also enjoy making CorelDraw Designs, WHITEBOARD ANIMATION, FACEBOOK MARKETING Ads and WEBSITE/BLOG content.
+                I have worked on several projects with impressive success rates. I speak and write in English fluently.</h5>
         </div>
         <div id="skills">
-            <h3>Skills</h3>
-            <p>Good knowledge of  HTML, CSS, Bootstrap, JavaScript, WordPress, PHP, UNIT TESTING, GIT, OOP, Laravel, VueJs(Basic) , MYSQL and POSTGRE.</p>
+            <h5 class="text-primary">Skills</h5>
+            <p>Good knowledge of HTML, CSS, Bootstrap, JavaScript, WordPress, PHP, UNIT TESTING, GIT, OOP, Laravel, VueJs(Basic) , MYSQL and POSTGRE.</p>
         </div>
         <div id="skills">
-            <h3>Portfolio</h3>
+            <h5 class="text-primary">Portfolio</h5>
             <ul>
-              <li><a href="https://mystore.techlybro.com/">https://mystore.techlybro.com</a></li>
-              <li><a href="https://techlybro.com/">https://techlybro.com/</a></li>
-              <li><a href=" https://readerslogue.com.ng/"> https://readerslogue.com.ng/</a></li>
-              <li><a href="https://kamilightglobal.com/">https://kamilightglobal.com/</a></li>
-              <li><a href="https://geniusgistmagazine.com/">https://geniusgistmagazine.com/</a></li>
-              <li><a href="https://mystore.techlybro.com/">https://mystore.techlybro.com</a></li>
-              <li><a href="https://swiftwheelslogistic.com/">https://swiftwheelslogistic.com/</a></li>
+                <li><a href="https://mystore.techlybro.com/" class="text-dark">https://mystore.techlybro.com</a></li>
+                <li><a href="https://techlybro.com/" class="text-dark">https://techlybro.com/</a></li>
+                <li><a href=" https://readerslogue.com.ng/" class="text-dark"> https://readerslogue.com.ng/</a></li>
+                <li><a href="https://kamilightglobal.com/" class="text-dark">https://kamilightglobal.com/</a></li>
+                <li><a href="https://geniusgistmagazine.com/" class="text-dark">https://geniusgistmagazine.com/</a></li>
+                <li><a href="https://mystore.techlybro.com/" class="text-dark">https://mystore.techlybro.com</a></li>
+                <li><a href="https://swiftwheelslogistic.com/" class="text-dark">https://swiftwheelslogistic.com/</a></li>
             </ul>
-            
         </div>
         <div>
-            <h3>Experience</h3>
+            <h5 class="text-primary">Cureent Experience</h5>
             <div id="experience">
                 <div class="start" style="margin-top: 0">
                     <h5>(Software Developer / ATM Support Engineer) - (Universal Horizon Limited)</h5>
@@ -108,7 +114,7 @@ require 'vendor/autoload.php';
       </div>   -->
             </div>
             <div id="education">
-                <h3>Education</h3>
+                <h5 class="text-primary">Education</h5>
                 <div id="experience">
                     <div class="start" style="margin-top: 0">
                         <h5>(University of Benin) - (Bsc. Computer Science)</h5>
@@ -122,62 +128,64 @@ require 'vendor/autoload.php';
       </div> -->
                 </div>
                 <div id="interest">
-                    <h3>Interest</h3>
+                    <h5 class="text-primary">Interest</h5>
                     <p>Learning new technology tools, Internet surfing, music and drawing</p>
                 </div>
             </div>
-
-            <section id="contact pt-4">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-10 text-center p-1">
-                    <div class="alt-font text-medium text-uppercase margin-5px-bottom sm-margin-three-bottom "><h4 class="text-primary">I'M OPEN FOR CONTRACT</h4></div>
-                    <h5 class="margin-55px-bottom alt-font font-weight-600 text-uppercase md-margin-30px-bottom sm-margin-15px-bottom">GET <span class="text-primary">FREE</span> BUSINESS CONSULTATION AND <span class="text-primary">FREE</span> WHITEBOARD ANIMATION ON A GO</h5>
-                    <div class="contact-us-form rounded p-4" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
-                        <form method="POST" id="form" >
-                            <div class="form-row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Enter name" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="Enter email" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="phone" placeholder="Enter phone number" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea name="comment" id="comment" class="form-control" rows="7" cols="25" placeholder="Your How can we help ( Tell us about your business and goals"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="number" id="budget" class="form-control" name="budget" placeholder="What is the budget for the project *"  required="">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 mt-3">
-                                    <button type="submit" class="btn btn-dark btn-block" id="btnContactUs" name="submit">
-                                        Send Message
-                                    </button>
-                                </div>
+            <section id="contact pt-4" style="padding-top: 40px">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10 text-center p-1">
+                            <div class="alt-font text-medium text-uppercase margin-5px-bottom sm-margin-three-bottom ">
+                                <h4 class="text-primary">I'M OPEN FOR CONTRACT</h4>
                             </div>
-                        </form>
+                            <h5 class="margin-55px-bottom alt-font font-weight-600 text-uppercase md-margin-30px-bottom sm-margin-15px-bottom">GET <span class="text-primary">FREE</span> BUSINESS CONSULTATION AND <span class="text-primary">FREE</span> WHITEBOARD ANIMATION ON A GO</h5>
+                            <div class="contact-us-form rounded p-4" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+                                <form method="POST" id="form">
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter name" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="email" placeholder="Enter email" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="phone" placeholder="Enter phone number" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <textarea name="comment" id="comment" class="form-control" rows="7" cols="25" placeholder="Your How can we help ( Tell us about your business and goals"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <input type="number" id="budget" class="form-control" name="budget" placeholder="What is the budget for the project *" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mt-3">
+                                            <button type="submit" class="btn btn-dark btn-block" id="btnContactUs" name="submit">
+                                                Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="text-center p-4">
+                    <p><span style="font-weight: bolder;">Favourite Quote:</span> <q>The secret of life, though, is to fall seven times and to get up eight times.</q></p>
+                </div>
+            </section>
 </body>
 
 </html>
-
 <?php
     if(isset($_POST['submit'])){
 
