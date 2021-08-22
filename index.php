@@ -80,7 +80,7 @@ body{
             <h5>Hey, I'm <span class="text-primary">Sammy</span>
                 Computer Science graduate and a Tech savvy. My goal is to bridge the gap between business and technology in Africa. I also enjoy making CorelDraw Designs, WHITEBOARD ANIMATION, FACEBOOK MARKETING Ads and WEBSITE/BLOG content.
                 I have worked on several projects with impressive success rates. I speak and write in English fluently.</h5>
-                <p class="margin-55px-bottom alt-font">Github: <a href="github.com/quitenoisemaker">github.com/quitenoisemaker</a>, Linkedin: <a href="linkedin.com/in/samsonojugo ">linkedin.com/in/samsonojugo</a> </p>
+                <p class="margin-55px-bottom alt-font">Github: <a href="https://github.com/quitenoisemaker">github.com/quitenoisemaker</a>, Linkedin: <a href="https://linkedin.com/in/samsonojugo ">linkedin.com/in/samsonojugo</a> </p>
                           
         </div>
         <div id="skills">
