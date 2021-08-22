@@ -1,4 +1,7 @@
 <?php
+
+                        //Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -16,6 +19,8 @@ require 'vendor/autoload.php';
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -64,17 +69,27 @@ require 'vendor/autoload.php';
     <div class="content p-2">
         <div class="text-center pt-4">
             <a href="https://training.zuri.team" target="blank"><img src="logo/download.png" class="img-fluid" width="300"></a>
-        </div><br><br>
+        </div><br>
+        
         <div id="personal">
             <h2>Hey I'm <span class="text-primary">Ojugo Samson Ehis</span></h2>
         </div>
         <div id="skills">
             <h3>Skills</h3>
-            <p>Good knowledge of HTML, CSS, Bootstrap, JavaScript, WordPress, PHP, UNIT TESTING, GIT, OOP, Laravel and MYSQL.</p>
+            <p>Good knowledge of  HTML, CSS, Bootstrap, JavaScript, WordPress, PHP, UNIT TESTING, GIT, OOP, Laravel, VueJs(Basic) , MYSQL and POSTGRE.</p>
         </div>
         <div id="skills">
-            <h3>Personal Portfolio</h3>
-            <a href="https://samsonojugo.herokuapp.com">https://samsonojugo.herokuapp.com</a>
+            <h3>Portfolio</h3>
+            <ul>
+              <li><a href="https://mystore.techlybro.com/">https://mystore.techlybro.com</a></li>
+              <li><a href="https://techlybro.com/">https://techlybro.com/</a></li>
+              <li><a href=" https://readerslogue.com.ng/"> https://readerslogue.com.ng/</a></li>
+              <li><a href="https://kamilightglobal.com/">https://kamilightglobal.com/</a></li>
+              <li><a href="https://geniusgistmagazine.com/">https://geniusgistmagazine.com/</a></li>
+              <li><a href="https://mystore.techlybro.com/">https://mystore.techlybro.com</a></li>
+              <li><a href="https://swiftwheelslogistic.com/">https://swiftwheelslogistic.com/</a></li>
+            </ul>
+            
         </div>
         <div>
             <h3>Experience</h3>
@@ -200,3 +215,90 @@ require 'vendor/autoload.php';
 
 
 //Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'samsonojugo@gmail.com';                     //SMTP username
+    $mail->Password   = 'quietnoisemaker';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('samsonojugo@gmail.com', 'Mailer');
+    $mail->addAddress('dequietdennis@gmail.com', 'samson');     //Add a recipient
+    // $mail->addAddress($mail);               //Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+    $mail->CharSet = "UTF-8";
+
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo "<script>swal({
+                     title: 'Message sent',
+                     icon: 'success',
+                     button: 'Ok!',
+                   }).then(function() {
+                Swal.fire({
+                            title: 'Please Wait!',
+                            text: 'Processing ...',
+                            timer: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                    window.location = 'index';
+                });</script>";
+} catch (Exception $e) {
+    echo "
+        <script>swal({
+                     title: 'Message sent',
+                     icon: 'success',
+                     button: 'Ok!',
+                  }).then(function() {
+                Swal.fire({
+                            title: 'Please Wait!',
+                            text: 'Processing ...',
+                            timer: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                    window.location = 'index';
+                });</script>
+    ";
+}
+                        
+                  //       if($mail){
+                  //           echo "<script>swal({
+                  //   title: 'Message sent',
+                  //   icon: 'success',
+                  //   button: 'Ok!',
+                  // })</script>";
+                  //       }else{
+                  //           echo "<script>swal({
+                  //   title: 'Opps! Error sending message',
+                  //   icon: 'warning',
+                  //   button: 'Ok!',
+                  // })</script>";
+                  //       }
+            }
+        ?>
